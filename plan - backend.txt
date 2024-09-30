@@ -1,0 +1,45 @@
+Databases
+1. Recipe database
+col 1 - Recipe ID
+col 2 - Title
+col 3 - ingredients
+col 4 - steps
+col 5- steps pt 2 (only used if needed for multiple parts, ie. cooking a pie crust + a pie filling, use part 2 for pie crust?
+col 6 - further instructions
+col 7 - array of tags, eg. [dinner, pork], [dessert, cake, gluten free]
+	- no planned implementation for pictures
+
+2. User database
+col 1 - user id
+col 2 - username
+col 3 - password
+	- not going to have email sign up, just username and password. 
+	- future addon could be emailing all your saved recipes in a formatted recipe book for easy printing
+	- or just downloading directly, not email
+
+3. users saved recipes
+col 1 - user id
+col 2 - array of saved recipe ids, eg [001, 052, 092]
+	-on deletion needs to cascade (ie delete account will also remove from this list)
+
+Database calls
+When searching:
+Option 1 - by text
+get from recipe database anything where input matches completely or partially the title
+
+Option 2 - by tag
+get from recipe database anything where all input tags are included in the array of database tags
+
+Favouriting/unfav
+User clicks favorite button, add ID of corresponding recipe to col 2 array where user id matches
+unfavourite -> filter array with recipe id, removing it
+
+Login to web page using database matching password.
+Will try to figure out passport, but use JWT if cant.
+
+Delete account
+drop from table if user id matches
+
+
+
+
