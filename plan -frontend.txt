@@ -7,7 +7,7 @@ picture
 search page (results underneath)
 if by name - text box + submit that will search through titles using submitted text
 if by tag - maybe a check box for appetizer, lunch, dinner, dessert, all - beef, chicken, pork, vegetable - if dessert is selected, cookie, cake, pie, etc.
-
+ -- I think this would be easier to get a list of all tags from the database, then display them all
 after search is submitted, display any matching recipes below.
 Recipes will just have the name, and if hovered over show you can click them.
 if logged in, have a star button that can add them to your favorites/saved recipes (can unfavourite them as well)
@@ -26,5 +26,19 @@ Have a save button to add to favourites if logged in.
 ---
 profile page will just have a list of all your saved recipes (can unfavourite them as well)
 button for changing password, deleting account - maybe have this in a cogwheel drop down
+
+--------
+nav component (always rendered)
+Home - basic homepage with information and links
+Register - Create a new account, link to login as well 
+Login - Login to account
+Profile - Shows your info, mainly used for saving favorite recipes
+Browse - Show all recipes in the database, ordered alphabetically
+Search - contains initial search, plus results
+/recipe/?id - shows details on the clicked recipe
+
+
+
+
 
 

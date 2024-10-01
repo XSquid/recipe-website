@@ -2,8 +2,8 @@ Databases
 1. Recipe database
 col 1 - Recipe ID
 col 2 - Title
-col 3 - ingredients
-col 4 - steps
+col 3 - ingredients - array, each item is a new ingredient
+col 4 - steps - array, each new item in the array is the next step
 col 5- steps pt 2 (only used if needed for multiple parts, ie. cooking a pie crust + a pie filling, use part 2 for pie crust?
 col 6 - further instructions
 col 7 - array of tags, eg. [dinner, pork], [dessert, cake, gluten free]
