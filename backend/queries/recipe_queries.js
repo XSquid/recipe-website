@@ -5,7 +5,6 @@ const getAllRecipes = (request, response) => {
         if (error) {
             throw error
         }
-        console.log(results.rows)
         return response.status(200).json(results.rows)
     })
 }
@@ -21,6 +20,7 @@ const addRecipe = (request, response) => {
                 return null
             }
             console.log('Recipe Added')
+            return response.status(201)
         }
     )
 }
