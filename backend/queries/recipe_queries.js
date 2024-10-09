@@ -9,6 +9,16 @@ const getAllRecipes = (request, response) => {
     })
 }
 
+const getRecipe = (request, response) => {
+    const id = parseInt(request.params.id)
+    database.query('SELECT * FROM recipes WHERE id = $1', [id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
+
 const addRecipe = (request, response) => {
     const {recipe_name, ingredients, steps, additional, tags} = request.body
 
@@ -25,7 +35,22 @@ const addRecipe = (request, response) => {
     )
 }
 
+const searchByName = (req, res) => {
+    const recipeSearch = `%${req.query.q}%`
+    database.query('SELECT * FROM recipes WHERE name ILIKE $1', [recipeSearch], (error, results) => {
+        if (error) {
+            console.log (`Error: ${error}`)
+            response.sendStatus(500)
+            return null
+        }
+        console.log(results.rows)
+        return res.status(200).json(results.rows)
+    })
+}
+
 module.exports = {
     getAllRecipes,
-    addRecipe
+    addRecipe,
+    getRecipe,
+    searchByName
 }

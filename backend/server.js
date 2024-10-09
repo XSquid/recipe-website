@@ -25,16 +25,18 @@ app.use(credentials)
 app.use(cors(corsOptions));
 
 //Body parser required to access req.body
-app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({
         extended: false,
     })
 )
+app.use(bodyParser.json())
+
 
 app.post('/submitrecipe', recipes.addRecipe)
 app.get('/getallrecipes', recipes.getAllRecipes)
-
+app.get('/recipe/:id', recipes.getRecipe)
+app.get('/recipes', recipes.searchByName)
 app.use('/', function (req, res, next) {
     res.send('Homepage')
 })
