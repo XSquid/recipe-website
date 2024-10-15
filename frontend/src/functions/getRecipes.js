@@ -1,6 +1,5 @@
 import axios from "../components/axios";
 
-
 export const submitRecipe = async (e) => {
     e.preventDefault();
     //Need to make a more robust check for if everything is good to submit

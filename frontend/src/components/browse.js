@@ -9,10 +9,12 @@ export default function Browse() {
     const [recipes, setRecipes] = useState([])
     const navigate = useNavigate();
 
+    //Navigate to recipe
     const clickHandler = (rid) => {
         navigate(`/recipe/${rid}`)
     }
 
+    //Retrieve all recipe data on page load
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get('/getallrecipes')

@@ -22,6 +22,7 @@ export default function Recipe() {
         // eslint-disable-next-line
     }, [])
 
+    //Render for additional instructions, different from others as it's not saved as array
     const adtInstr = () => {
         let instructions = recipe[0]?.instructions
         instructions = instructions?.slice(2, instructions.length - 2) // Stripping away 2 characters on either side, would be saved in database as {"Instructions"}

@@ -10,6 +10,7 @@ import Profile from './components/profile';
 import AddRecipe from './components/addrecipe';
 import Recipe from './components/recipe';
 import Recipes from './components/recipes';
+import RequireAuth from './components/hooks/requireAuth';
 
 export const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Root />}>
@@ -17,7 +18,11 @@ export const router = createBrowserRouter(createRoutesFromElements(
         <Route path='/search' element={<Search />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/profile' element={<Profile />} />
+
+        <Route element={<RequireAuth />}>
+            <Route path='/profile' element={<Profile />} />
+        </Route>
+
         <Route path='/browse' element={<Browse />} />
         <Route path='/addrecipe' element={<AddRecipe />} />
         <Route path='/recipe/:id' element={<Recipe />} />

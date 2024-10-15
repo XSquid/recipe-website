@@ -25,7 +25,6 @@ export default function Recipes() {
     }, [])
 
 
-
     return (
         results.length > 0
         ?
