@@ -17,7 +17,7 @@ const PORT = 3000;
 app.use(session({
     secret: 'meowmeow',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         secure: false,
         maxAge: 1000 * 60 * 10 // 10 minutes
@@ -30,12 +30,13 @@ app.use(credentials)
 app.use(cors(corsOptions));
 
 //Body parser required to access req.body
+app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({
         extended: false,
     })
 )
-app.use(bodyParser.json())
+
 
 passport.use(new LocalStrategy(function (username, password, done) {
     database.query('SELECT * FROM users WHERE username = $1', [username], (error, user) => {
@@ -63,7 +64,9 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
     console.log(`Deserialize user: ${id}`)
     database.query('SELECT * FROM users WHERE id = $1', [id], (error, users) => {
-        if (error) return done(error)
+        if (error) {
+            return done(error)
+        }
         done(null, users.rows[0])
     })
 })
@@ -75,6 +78,8 @@ app.get('/getallrecipes', recipes.getAllRecipes)
 app.get('/recipe/:id', recipes.getRecipe)
 app.get('/recipes', recipes.searchForRecipe)
 app.get('/recipes/alltags', recipes.getUniqueTags)
+app.get('/profile/favourites', recipes.getFavourites)
+app.post('/profile/add', recipes.addFavourite)
 app.post('/register/create', accounts.registerUser)
 app.post('/login',
     passport.authenticate('local'),

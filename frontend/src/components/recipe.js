@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from './axios';
 import { useParams } from 'react-router';
 import './css-files/recipe.css'
+import { addFavourite } from '../functions/getRecipes';
 
 export default function Recipe() {
 
@@ -10,14 +11,12 @@ export default function Recipe() {
     const [recipe, setRecipe] = useState([])
 
     useEffect(() => {
-
         const fetchData = async () => {
             const response = await axios.get(`/recipe/${id}`)
             if (response.data[0].id) {
                 setRecipe(response.data)
             }
         };
-
         fetchData();
         // eslint-disable-next-line
     }, [])
@@ -41,9 +40,9 @@ export default function Recipe() {
         recipe[0]?.id
             ?
             <div className='recipe-card'>
-                <h1>{recipe[0]?.name}</h1>
+                <h1>{recipe[0]?.name} <button onClick={() => addFavourite(recipe[0]?.id)}>Add to Favourites</button></h1>
                 {recipe[0]?.tags.map((tag) => (
-                    <span key={tag}>{tag} </span>
+                    <><span key={tag}>- {tag} </span><br /></>
                 ))}
                 <div>
                     <h2>Ingredients</h2>

@@ -10,6 +10,7 @@ export default function LogButton() {
 
     const logoutHandler = async (e) => {
         e.preventDefault();
+        // eslint-disable-next-line
         const response = await axios.post('/logout')
         setAuth({})
         navigate('/')
@@ -18,7 +19,11 @@ export default function LogButton() {
     return (
         auth?.uid
             ?
-            <button onClick={logoutHandler}>Log Out</button>
+            <>
+                <button onClick={logoutHandler}>Log Out</button>
+                <Link to={'/profile'}><button>Profile</button></Link>
+            </>
+
             :
             <>
                 <Link to={'/register'}><button>Register</button></Link>

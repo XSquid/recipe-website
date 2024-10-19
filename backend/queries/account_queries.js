@@ -12,10 +12,18 @@ const registerUser = (req, res) => {
             bcrypt.hash(password, salt, function (err, hash) {
                 database.query('INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *', [username, hash], (error, results) => {
                     if (error) {
-                        console.log(`Error: ${error}`)
+                        console.log(`Error: ${error.detail}`)
                         res.sendStatus(400)
                         return null
                     }
+                    const user_id = (results.rows[0].id)
+                    database.query('INSERT INTO users_recipes (uid) VALUES ($1)', [user_id], (error, results) => {
+                        if (error) {
+                            console.log(`Error: ${error.detail}`)
+                            res.sendStatus(400)
+                            return null
+                        }
+                    })
                     console.log(`Created user with username: ${username}`)
                     res.sendStatus(201)
                 })

@@ -20,7 +20,6 @@ export default function Login() {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
         })
-        console.log(response)
         if (response.status === 200) {
             const username = response?.data.username
             const uid = response?.data.uid
