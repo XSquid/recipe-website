@@ -18,7 +18,7 @@ export default function Search() {
     const selectTag = () => {
         return (
             <div className='search-type' onChange={changeSearch}>
-                <p>Search by: {searchBy}</p>
+                <p>Search by: </p>
                 <form>
                     <input type='radio' id='name' name='search-type' value='name' defaultChecked />
                     <label htmlFor='name'>Name</label>
@@ -36,7 +36,6 @@ export default function Search() {
         if (tagSelect === false) {
             const response = await retrieveTags()
             setTags(response)
-            console.log(tags)
             setTagSelect(true)
         }
     }
@@ -45,7 +44,7 @@ export default function Search() {
     const displayTags = () => {
         if (tags) {
             return (
-                <div>
+                <div className='search-content'>
                     <form action='/recipes' method='get' name='search'>
                         {tags.map((tag) => (<div key={tag}>
                             <input type='checkbox' id={tag} name='tag' value={tag}></input>
@@ -73,7 +72,7 @@ export default function Search() {
                 <div className='search-content'>
                     <form action='/recipes' method='get' name='search'>
                         <div>
-                            <label htmlFor='recipe-search'>Search for recipes:</label><br />
+                            <label htmlFor='recipe-search'>Search for recipes:</label>{search}<br />
                             <input
                                 id='recipe-search'
                                 name="q"

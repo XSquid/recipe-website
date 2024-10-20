@@ -9,30 +9,42 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const { setAuth } = useAuth();
-
+    const [errMsg, setErrMsg] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await axios.post('/login', {
-            username,
-            password
-        }, {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true
-        })
-        if (response.status === 200) {
-            const username = response?.data.username
-            const uid = response?.data.uid
-            setAuth({username, uid})
-            navigate('/profile')
+        try {
+            const response = await axios.post('/login', {
+                username,
+                password
+            }, {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            })
+            if (response.status === 200) {
+                const username = response?.data.username
+                const uid = response?.data.uid
+                setAuth({ username, uid })
+                navigate('/profile')
+            }
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response')
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password')
+            } else if (err.response?.status === 401) {
+                setErrMsg('Wrong Password')
+            } else {
+                setErrMsg('Login Failed')
+            }
         }
-        //Need error handler for wrong password
 
     }
     return (
         <div>
             <h1>Login</h1>
             <div className='login-form'>
+                <p id='err-msg'>{errMsg}</p>
                 <form>
                     <div>
                         <label htmlFor="username">Username</label><br />

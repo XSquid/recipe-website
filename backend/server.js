@@ -10,10 +10,12 @@ const passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy;
 const { database } = require('./database')
 const bcrypt = require("bcrypt");
+const helmet = require('helmet')
 
 const app = express();
 const PORT = 3000;
 
+app.use(helmet());
 app.use(session({
     secret: 'meowmeow',
     resave: false,
@@ -87,7 +89,7 @@ app.post('/login',
         const uid = req.user.id
         const username = req.user.username
         res.status(200).json({uid, username})
-    }
+    } 
 )
 app.post('/logout', accounts.logoutUser)
 app.use('/', function (req, res, next) {

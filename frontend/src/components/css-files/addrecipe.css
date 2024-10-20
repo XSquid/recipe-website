@@ -2,3 +2,52 @@
     
 }
  */
+
+textarea {
+    width: 40vw;
+    height: auto;
+}
+
+.add-recipe-form input {
+    width: 40vw;
+}
+
+.title{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+
+.tooltip{
+    display: inline-block;
+    vertical-align: 4px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #192733;
+    user-select: none;
+}
+
+.tooltip:hover{
+    cursor: help;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    color: white;
+    font-size: 12px;
+    line-height: 15px;
+    background-color: #192733;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+  }

@@ -24,19 +24,25 @@ const getRecipe = (request, response) => {
 //Add recipe to database
 //Need to add checks for malicious code
 //Need to add checks for duplicates
-const addRecipe = (request, response) => {
-    const { recipe_name, ingredients, steps, additional, tags } = request.body
-    database.query('INSERT INTO recipes (name, ingredients, steps, instructions, tags) VALUES ($1, $2, $3, $4, $5)',
-        [recipe_name, ingredients, steps, additional, tags], (error, results) => {
-            if (error) {
-                console.log(`Error: ${error}`)
-                response.sendStatus(500)
-                return null
+const addRecipe = (req, res) => {
+    const uid = req.user?.id
+    const { recipe_name, ingredients, steps, additional, tags } = req.body
+    if (uid) {
+        database.query('INSERT INTO recipes (name, ingredients, steps, instructions, tags) VALUES ($1, $2, $3, $4, $5)',
+            [recipe_name, ingredients, steps, additional, tags], (error, results) => {
+                if (error) {
+                    console.log(`Error: ${error}`)
+                    res.sendStatus(500)
+                    return null
+                }
+                console.log('Recipe Added')
+                return res.sendStatus(201)
             }
-            console.log('Recipe Added')
-            return response.status(201)
-        }
-    )
+        )
+    } else {
+        res.send('No session found')
+    }
+
 }
 
 const searchForRecipe = (req, res) => {

@@ -23,8 +23,11 @@ export const router = createBrowserRouter(createRoutesFromElements(
             <Route path='/profile' element={<Profile />} />
         </Route>
 
+        <Route element={<RequireAuth />}>
+            <Route path='/addrecipe' element={<AddRecipe />} />
+        </Route>
+
         <Route path='/browse' element={<Browse />} />
-        <Route path='/addrecipe' element={<AddRecipe />} />
         <Route path='/recipe/:id' element={<Recipe />} />
         <Route path='/recipes/' element={<Recipes />} />
     </Route>
