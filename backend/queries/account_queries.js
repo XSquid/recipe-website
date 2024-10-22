@@ -1,5 +1,6 @@
 const { database } = require('../database')
 const bcrypt = require("bcrypt");
+require('dotenv').config()
 
 const registerUser = (req, res) => {
     const { username, password, confirmPassword } = req.body
@@ -41,9 +42,8 @@ const logoutUser = (req, res) => {
       res.sendStatus(202);
 }
 
-
-
 module.exports = {
     registerUser,
-    logoutUser
+    logoutUser,
+
 }

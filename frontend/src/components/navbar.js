@@ -4,6 +4,7 @@ import './css-files/navbar.css'
 import { useNavigate } from "react-router";
 import axios from "./axios";
 import useAuth from "./hooks/useAuth";
+import AdminButton from './admin/adminButton';
 
 export default function Navbar() {
 
@@ -32,6 +33,8 @@ export default function Navbar() {
                     <Link to={'/profile'}><button>Profile</button></Link>
                     <Link to={'/addrecipe'}><button>Add Recipe</button></Link>
                     <button onClick={logoutHandler}>Log Out</button>
+                    <AdminButton />
+                    
 
                 </>
                 :

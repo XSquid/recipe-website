@@ -25,24 +25,27 @@ const getRecipe = (request, response) => {
 //Need to add checks for malicious code
 //Need to add checks for duplicates
 const addRecipe = (req, res) => {
+
     const uid = req.user?.id
+    const submitBy = req.user?.username
     const { recipe_name, ingredients, steps, additional, tags } = req.body
+
     if (uid) {
-        database.query('INSERT INTO recipes (name, ingredients, steps, instructions, tags) VALUES ($1, $2, $3, $4, $5)',
-            [recipe_name, ingredients, steps, additional, tags], (error, results) => {
+        database.query('INSERT INTO pending (name, ingredients, steps, instructions, tags, submit) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+            [recipe_name, ingredients, steps, additional, tags, submitBy], (error, results) => {
                 if (error) {
                     console.log(`Error: ${error}`)
                     res.sendStatus(500)
                     return null
                 }
-                console.log('Recipe Added')
+                const recipe = results.rows[0]
+                console.log(`Recipe ID ${recipe.id} and name ${recipe.name} has been submitted by user ${recipe.submit}`)
                 return res.sendStatus(201)
             }
         )
     } else {
         res.send('No session found')
     }
-
 }
 
 const searchForRecipe = (req, res) => {
@@ -62,7 +65,6 @@ const searchForRecipe = (req, res) => {
     if (req.query.tag) {
         //Need to ensure recipeSearch is an array, when only one tag is provided it is not in an array. Put into array tags and flattened to ensure recipeSearch is always a 1d array
         const recipeSearch = [req.query.tag].flat()
-        console.log(recipeSearch)
         database.query('SELECT * FROM RECIPES WHERE tags @> $1', [recipeSearch], (error, results) => {
             if (error) {
                 console.log(`Error: ${error}`)
@@ -116,25 +118,21 @@ const getFavourites = (req, res) => {
 
 const addFavourite = (req, res) => {
     const { id } = req.body
-    const uid = req.user.id
-    console.log(uid)
-    if (req.user.id) {
-        console.log('success')
+    const uid = req.user?.id
+    if (uid) {
         database.query('SELECT * FROM users_recipes WHERE uid = $1', [uid], (error, results) => {
             if (error) {
                 console.log(`Error: ${error}`)
                 response.sendStatus(500)
                 return null
             }
+
             const data = results.rows[0].favourites
-            console.log(data)
-
-
             //Checking if recipe is already saved. If saved, check will be set to true
             let check = false
             if (data !== null) {
                 data.forEach(el => {
-                    if (el[0].includes(id)) {
+                    if (el[0] == (id)) {
                         console.log(`${el[0]} already favourited`)
                         check = true
                     }

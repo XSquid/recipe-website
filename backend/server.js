@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session')
 const recipes = require('./queries/recipe_queries')
 const accounts = require('./queries/account_queries')
+const admin = require('./queries/admin_queries')
 const corsOptions = require('./config/corsOptions')
 const credentials = require('./config/credentials')
 const cors = require('cors');
@@ -59,12 +60,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-    console.log(`Serialize user: ${user.id}`)
+    // console.log(`Serialize user: ${user.id}`)
     done(null, user.id) //make sure id is same as the column in database
   });
 
 passport.deserializeUser((id, done) => {
-    console.log(`Deserialize user: ${id}`)
+    // console.log(`Deserialize user: ${id}`)
     database.query('SELECT * FROM users WHERE id = $1', [id], (error, users) => {
         if (error) {
             return done(error)
@@ -74,7 +75,11 @@ passport.deserializeUser((id, done) => {
 })
 
 
-
+app.get('/admin', admin.checkAdmin, function (req, res) { res.sendStatus(200) })
+app.get('/admin/get_pending', admin.checkAdmin, admin.getAllPending)
+app.get('/admin/review/:id', admin.checkAdmin, admin.getPendingByID)
+app.post('/admin/review/deny/:id', admin.checkAdmin, admin.denyPendingRecipe)
+app.post('/admin/review/approve/:id', admin.checkAdmin, admin.approvePendingRecipe)
 app.post('/submitrecipe', recipes.addRecipe)
 app.get('/getallrecipes', recipes.getAllRecipes)
 app.get('/recipe/:id', recipes.getRecipe)

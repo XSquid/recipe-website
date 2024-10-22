@@ -11,6 +11,8 @@ import AddRecipe from './components/addrecipe';
 import Recipe from './components/recipe';
 import Recipes from './components/recipes';
 import RequireAuth from './components/hooks/requireAuth';
+import Admin from './components/admin/admin';
+import AdminReview from './components/admin/adminReview';
 
 export const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Root />}>
@@ -25,6 +27,11 @@ export const router = createBrowserRouter(createRoutesFromElements(
 
         <Route element={<RequireAuth />}>
             <Route path='/addrecipe' element={<AddRecipe />} />
+        </Route>
+
+        <Route element={<RequireAuth />}>
+            <Route path='/admin' element={<Admin />} />
+            <Route path='/admin/review/:id' element={<AdminReview />} />
         </Route>
 
         <Route path='/browse' element={<Browse />} />
