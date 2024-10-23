@@ -1,5 +1,11 @@
 import axios from "../components/axios";
 
+const config = {
+    withCredentials: true,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+};
 
 export const retrieveTags = async () => {
     const response = await axios.get('/recipes/alltags')
@@ -12,13 +18,18 @@ export const getFavourites = async (uid) => {
 }
 
 export const addFavourite = async (id) => {
-    const config = {
-        withCredentials: true,
-        headers: {
-            'Content-Type': 'application/json',
+
+    const response = await axios.post('/profile/addFavourite',
+        {
+            id
         },
-    };
-    const response = await axios.post('/profile/add',
+        config
+    )
+    return response.data
+}
+
+export const removeFavourite = async (id) => {
+    const response = await axios.post('/profile/removeFavourite',
         {
             id
         },

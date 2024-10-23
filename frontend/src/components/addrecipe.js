@@ -48,7 +48,6 @@ export default function AddRecipe() {
                     withCredentials: true
                 }
             )
-            console.log(response)
             if (response.status === 201) {
                 setTimeout(function () {
                     setSubmitSuccess('Submitting recipe...')

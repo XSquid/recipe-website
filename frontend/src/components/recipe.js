@@ -3,12 +3,18 @@ import { useState, useEffect } from "react";
 import axios from './axios';
 import { useParams } from 'react-router';
 import './css-files/recipe.css'
-import { addFavourite } from '../functions/getRecipes';
+import { addFavourite, removeFavourite } from '../functions/getRecipes';
+import useAuth from './hooks/useAuth';
+
+
 
 export default function Recipe() {
 
+    const { auth, setAuth } = useAuth();
     const { id } = useParams();
     const [recipe, setRecipe] = useState([])
+    const [isFavourite, setIsFavourite] = useState(null)
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,7 +23,9 @@ export default function Recipe() {
                 setRecipe(response.data)
             }
         };
+
         fetchData();
+
         // eslint-disable-next-line
     }, [])
 
@@ -35,12 +43,45 @@ export default function Recipe() {
 
     }
 
+    const addHandler = async (id) => {
+        const response = await addFavourite(id)
+        setAuth({
+            username: auth.username,
+            uid: auth.uid,
+            favouriteRecipes: response
+        })
+        setIsFavourite(true)
+    }
+
+    const removeHandler = async (id) => {
+        const response = await removeFavourite(id)
+        setAuth({
+            username: auth.username,
+            uid: auth.uid,
+            favouriteRecipes: response
+        })
+        setIsFavourite(false)
+    }
+
+    const favouriteButton = () => {
+        if (auth.uid) {
+            if ((auth.favouriteRecipes.some(e => e.id === recipe[0]?.id)) || (isFavourite === true)) {
+                return (
+                    <span className='remove-favourite-button' onClick={() => removeHandler(recipe[0]?.id)}><i className="fa-solid fa-star"></i></span>
+                )
+            } else {
+                return (
+                    <span className='add-favourite-button' onClick={() => addHandler(recipe[0]?.id)}><i className="fa-regular fa-star"></i></span>
+                )
+            }
+        }
+    }
 
     return (
         recipe[0]?.id
             ?
             <div className='recipe-card'>
-                <h1>{recipe[0]?.name} <button onClick={() => addFavourite(recipe[0]?.id)}>Add to Favourites</button></h1>
+                <h1>{recipe[0]?.name} {favouriteButton()}</h1>
                 {recipe[0]?.tags.map((tag) => (
                     <><span key={tag}>- {tag} </span><br /></>
                 ))}

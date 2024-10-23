@@ -86,7 +86,8 @@ app.get('/recipe/:id', recipes.getRecipe)
 app.get('/recipes', recipes.searchForRecipe)
 app.get('/recipes/alltags', recipes.getUniqueTags)
 app.get('/profile/favourites', recipes.getFavourites)
-app.post('/profile/add', recipes.addFavourite)
+app.post('/profile/addFavourite', recipes.addFavourite)
+app.post('/profile/removeFavourite', recipes.removeFavourite)
 app.post('/register/create', accounts.registerUser)
 app.post('/login',
     passport.authenticate('local'),

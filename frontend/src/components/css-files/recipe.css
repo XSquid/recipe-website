@@ -1,3 +1,22 @@
 /* .recipe-card{
     margin-left: 2em;
 } */
+
+.add-favourite-button{
+    color: black;
+}
+
+.remove-favourite-button{
+    color:#FFD43B
+}
+
+.add-favourite-button:hover{
+    cursor:pointer;
+    color: #ffc800
+}
+
+.remove-favourite-button:hover{
+    cursor: pointer;
+    color:#ffc800
+}
+

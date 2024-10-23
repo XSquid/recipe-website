@@ -1,3 +1,7 @@
 /* .recipe-browse{
    
 } */
+
+.browse-select-recipe:hover{
+    cursor: pointer;
+}

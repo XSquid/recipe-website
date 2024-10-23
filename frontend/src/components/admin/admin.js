@@ -42,6 +42,7 @@ export default function Admin() {
     useEffect(() => {
         checkAdmin();
         loadPending()
+        // eslint-disable-next-line
     }, [authenticated])
 
     return (

@@ -24,8 +24,13 @@ export default function Profile() {
                 setAuth({})
                 navigate('/')
             } else if (preventCount === 0) {
-                setRecipes(response)
-
+                const favouriteRecipes = response
+                setRecipes(favouriteRecipes)
+                setAuth({
+                    username: auth.username,
+                    uid: auth.uid,
+                    favouriteRecipes
+                })
             }
         }
     }
@@ -38,7 +43,7 @@ export default function Profile() {
     return (
         <div className='profile-recipes'>
             <h1>Profile for {auth.username}</h1>
-            {recipes?.map((ea) => (<div key={ea.id} onClick={() => clickHandler(ea.id)}>{ea.name}</div>))}
+            {recipes?.map((ea) => (<div key={ea.id} onClick={() => clickHandler(ea.id)}><span className='profile-select-recipe'>{ea.name}</span></div>))}
         </div>
 
     )
