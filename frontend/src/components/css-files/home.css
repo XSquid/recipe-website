@@ -1,16 +1,57 @@
 .home-page{
     min-height: calc(100vh - 110px);
-    height: 100%;
+    background: url('./img/background-1.jpg');
+    background-size:cover;
+    color: #FCFBF4;
+    text-shadow: 0 0 2px #000;
+}
+
+.home-content{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: 10em;
+    min-width: calc(36em + 70px);
+    width: 50%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.384);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px; 
+    text-align: center;
+}
+
+.home-content h2{
+    margin: 0;
 }
 
 .home-description{
     min-height: 80px;
+    margin-bottom: 10px;
 }
 
-.home-page button{
-    height: 2em;
-    min-width: 8rem;
-    font-size: 1.1em;
-    margin-right: 1em;
-    border-radius: 1.5em;
+.home-links{
+    display: flex;
+    justify-content: space-around; 
+}
+
+.home-links button{
+    white-space: nowrap;
+    padding: 0.5em;
+    min-width: 8em;
+    background-color: #FCFBF4;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.home-links button:hover{
+    box-shadow: inset #808080a1 0px 0px 60px -12px;
+
 }

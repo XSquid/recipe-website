@@ -30,7 +30,7 @@ export default function Browse() {
             <div className='browse-content'>
                 <h1>Browse all recipes</h1>
                 {recipes.map((item) => (
-                    <div key={item.id} className='browse-recipe'><span className='browse-select-recipe' onClick={() => clickHandler(item.id)} >{item.name}</span></div>
+                    <div key={item.id} className='browse-recipe'><li className='browse-select-recipe' onClick={() => clickHandler(item.id)} >{item.name}</li></div>
                 ))}
             </div>
 

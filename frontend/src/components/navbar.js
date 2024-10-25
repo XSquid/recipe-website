@@ -22,7 +22,7 @@ export default function Navbar() {
 
     return (
         <div className='navbar-container'>
-            <h1>Recipes</h1>
+            <h1>Recipe Book</h1>
             <div className='navbar'>
                 {auth?.uid
                 ?

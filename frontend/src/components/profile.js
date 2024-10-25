@@ -41,9 +41,11 @@ export default function Profile() {
     }, [])
 
     return (
-        <div className='profile-recipes'>
-            <h1>Profile for {auth.username}</h1>
-            {recipes?.map((ea) => (<div key={ea.id} onClick={() => clickHandler(ea.id)}><span className='profile-select-recipe'>{ea.name}</span></div>))}
+        <div className='profile-page'>
+            <div className='profile-content'>
+            <h1>Saved Recipes for {auth.username}</h1>
+            {recipes?.map((ea) => (<div key={ea.id} ><span className='profile-select-recipe' onClick={() => clickHandler(ea.id)}>{ea.name}</span></div>))}
+            </div>
         </div>
 
     )

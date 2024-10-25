@@ -1,3 +1,30 @@
+.profile-page{
+    min-height: calc(100vh - 110px);
+    background: url('./img/cutting-board-2.jpg');
+    background-size: cover;
+}
+
+.profile-content{
+    margin-left: 10%;
+    margin-top: 1em;
+}
+
+.profile-select-recipe{
+    list-style: none;
+    background-color: #FCFBF4;
+    float:left;
+    clear:left;
+    width: auto;
+    color: black;
+    padding: 0.5em;
+    margin-bottom: 0.25em;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .profile-select-recipe:hover{
-    cursor:pointer;
+    box-shadow: inset #8080808f 0px 0px 60px -12px;
 }

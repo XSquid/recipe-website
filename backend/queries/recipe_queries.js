@@ -2,7 +2,7 @@ const { database } = require('../database')
 
 //Retrieve all recipes
 const getAllRecipes = (req, res) => {
-    database.query('SELECT * FROM RECIPES', (error, results) => {
+    database.query('SELECT * FROM RECIPES ORDER BY name', (error, results) => {
         if (error) {
             throw error
         }

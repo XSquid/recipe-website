@@ -10,16 +10,21 @@
 }
 
 .browse-select-recipe{
+    list-style: none;
+    background-color: #FCFBF4;
+    float:left;
+    clear:left;
+    width: auto;
     color: black;
-    font-weight: 500;
-    background-color: #964b0050;
-    padding-left: 1em;
-    padding-right: 1em;
-    font-size: 1.2em;
-    line-height: 1.6em;
-    border-radius: 0.5em;
+    padding: 0.5em;
+    margin-bottom: 0.25em;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .browse-select-recipe:hover{
-    cursor: pointer;
+    box-shadow: inset #8080808f 0px 0px 60px -12px;
 }

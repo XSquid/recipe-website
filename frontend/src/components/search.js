@@ -18,6 +18,7 @@ export default function Search() {
     const selectTag = () => {
         return (
             <div className='search-type' onChange={changeSearch}>
+                <h2>Search for Recipes</h2>
                 <p>Search by: </p>
                 <form>
                     <input type='radio' id='name' name='search-type' value='name' defaultChecked />
@@ -44,13 +45,16 @@ export default function Search() {
     const displayTags = () => {
         if (tags) {
             return (
-                <div className='search-content'>
+                <div className='search-tag'>
                     <form action='/recipes' method='get' name='search'>
-                        {tags.map((tag) => (<div key={tag}>
-                            <input type='checkbox' id={tag} name='tag' value={tag}></input>
-                            <label htmlFor={tag}>{tag}</label>
+                        <div className='three-column-grid'>
+                            {tags.map((tag) => (<div key={tag}>
+                                <input type='checkbox' id={tag} name='tag' value={tag}></input>
+                                <label htmlFor={tag}>{tag}</label>
                             </div>))}
-                            <button type='submit'>Search Recipe</button>
+                        </div>
+
+                        <button type='submit'>Search Recipe</button>
                     </form>
 
                 </div>
@@ -68,31 +72,36 @@ export default function Search() {
         searchBy === 'name'
             ?
             <div className='search-page'>
-                {selectTag()}
                 <div className='search-content'>
-                    <form action='/recipes' method='get' name='search'>
-                        <div>
-                            <label htmlFor='recipe-search'>Search for recipes:</label>{search}<br />
-                            <input
-                                id='recipe-search'
-                                name="q"
-                                type='search'
-                                autoComplete='off'
-                                onChange={event => setSearch(event.target.value)}
-                                value={search}
-                                placeholder='Search for recipes...'
-                                required
-                            />
-                        </div>
-                        <button type='submit'>Search Recipe</button>
-                    </form>
+                    {selectTag()}
+                    <div className='search-name'>
+                        <form action='/recipes' method='get' name='search'>
+                            <div>
+                                <label htmlFor='recipe-search'></label><br />
+                                <input
+                                    id='recipe-search'
+                                    name="q"
+                                    type='search'
+                                    autoComplete='off'
+                                    onChange={event => setSearch(event.target.value)}
+                                    value={search}
+                                    placeholder='Search for recipes...'
+                                    required
+                                />
+                            </div>
+                            <button type='submit'>Search Recipe</button>
+                        </form>
 
+                    </div>
                 </div>
+
             </div>
             :
             <div className='search-page'>
-                {selectTag()}
-                {displayTags()}
+                <div className='search-content'>
+                    {selectTag()}
+                    {displayTags()}
+                </div>
             </div>
 
     )

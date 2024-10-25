@@ -67,55 +67,59 @@ export default function AddRecipe() {
     }
 
     return (
-        <div className='add-recipe'>
-            <div className='title-container'>
-                <h1 className='title'>Add Recipe</h1>
-                <div className='tooltip'>
-                    ?
-                    <div className='tooltip-text'>
-                        <h2>Instructions</h2>
-                        <p>Must include recipe name</p>
-                        <p>Add a new ingredient, step or tag by hitting Enter and typing on the next line. Do not include - on new line.</p>
-                        <p>Example: <br/>
-                        2 cups flour <br />
-                        1/2 cup sugar <br />
-                        tsp salt <br /></p>
-                        <p>Must include: <br/>
-                        Recipe Name <br/>
-                        At least 2 ingredients <br />
-                        At least 2 steps <br/>
-                        Additiona Instructions not required <br/>
-                        At least one tag</p>
-                        <p>Examples of tags: chicken, beef, pasta, dinner, lunch, dessert, etc..</p>
+        <div className='add-recipe-page'>
+            <div className='add-recipe-content'>
+                <div className='title-container'>
+                    <h1 className='title'>Add Recipe</h1>
+                    <div className='tooltip'>
+                        ?
+                        <div className='tooltip-text'>
+                            <h2>Instructions</h2>
+                            <p>Must include recipe name</p>
+                            <p>Add a new ingredient, step or tag by hitting Enter and typing on the next line. Do not include - on new line.</p>
+                            <p>Example: <br />
+                                2 cups flour <br />
+                                1/2 cup sugar <br />
+                                tsp salt <br /></p>
+                            <p>Must include: <br />
+                                Recipe Name <br />
+                                At least 2 ingredients <br />
+                                At least 2 steps <br />
+                                Additiona Instructions not required <br />
+                                At least one tag</p>
+                            <p>Examples of tags: chicken, beef, pasta, dinner, lunch, dessert, etc..</p>
+                        </div>
                     </div>
+
+                </div>
+
+
+                <div className='add-recipe-form'>
+                    <h2>{submitSuccess}</h2>
+                    <form id='addRecipeForm'>
+
+                        <label htmlFor="recipe_name">Recipe Name</label><br />
+                        <input id="recipe_name" name="recipe_name" type="text" autoComplete="off" required /><br />
+
+                        <label htmlFor="ingredients">Ingredients</label><br />
+                        <textarea id="ingredients" name="ingredients" type="textarea" autoComplete="off" rows='5' required /><br />
+
+                        <label htmlFor="steps">Steps</label><br />
+                        <textarea id="steps" name="steps" type="textarea" autoComplete="off" required rows='5' /><br />
+
+                        <label htmlFor="additional">Additional Instructions</label><br />
+                        <textarea id="additional" name="additional" type="textarea" autoComplete="off" /><br />
+
+                        <label htmlFor="tags">Tags</label><br />
+                        <textarea id="tags" name="tags" type="textarea" autoComplete="off" required rows='2' /><br />
+
+                        <button type="submit" onClick={submitRecipe}>Submit</button>
+
+                    </form>
                 </div>
 
             </div>
 
-
-            <div className='add-recipe-form'>
-                <h2>{submitSuccess}</h2>
-                <form id='addRecipeForm'>
-
-                    <label htmlFor="recipe_name">Recipe Name</label><br />
-                    <input id="recipe_name" name="recipe_name" type="text" autoComplete="off" required /><br />
-
-                    <label htmlFor="ingredients">Ingredients</label><br />
-                    <textarea id="ingredients" name="ingredients" type="textarea" autoComplete="off" rows='5' required /><br />
-
-                    <label htmlFor="steps">Steps</label><br />
-                    <textarea id="steps" name="steps" type="textarea" autoComplete="off" required rows='5' /><br />
-
-                    <label htmlFor="additional">Additional Instructions</label><br />
-                    <textarea id="additional" name="additional" type="textarea" autoComplete="off" /><br />
-
-                    <label htmlFor="tags">Tags</label><br />
-                    <textarea id="tags" name="tags" type="textarea" autoComplete="off" required rows='2' /><br />
-
-                    <button type="submit" onClick={submitRecipe}>Submit</button>
-
-                </form>
-            </div>
 
         </div>
     )

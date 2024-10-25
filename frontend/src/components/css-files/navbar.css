@@ -1,10 +1,12 @@
 .navbar-container{
-    background-color:bisque;
     position: relative;
     padding-bottom: 10px;
     min-height: 100px;
     min-width: 509px;
     padding-left: 2em;
+    background: url('./img/slate-1.jpg');
+    background-size: repeat;
+    color: #FCFBF4;
 }
 
 .navbar-container h1{
@@ -17,16 +19,11 @@
     height: 1.5rem;
     min-width: 7rem;
     font-size: 1rem;
-    margin-left: 1rem;
-    border-radius: 1rem;
-}
-
-.navbar{
-    text-align: left;
-}
-
-.navbar button{
     margin-left: 10px;
+    border-radius: 1rem;
+    background-color: #FCFBF4;
 }
 
-
+.navbar-container button:hover{
+    background-color:#fcfbf4b4
+}

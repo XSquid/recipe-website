@@ -78,8 +78,7 @@ export default function Recipe() {
     }
 
     return (
-        recipe[0]?.id
-            ?
+
             <div className='recipe-page'>
                 <div className='recipe-card'>
                     <h1>{recipe[0]?.name} {favouriteButton()}</h1>
@@ -104,8 +103,6 @@ export default function Recipe() {
                 </div>
             </div>
 
-            :
-            <div></div>
 
     )
 }

@@ -44,7 +44,7 @@ export default function Register() {
                     </div>
                     <div>
                         <label htmlFor="confirmpassword">Confirm Password</label><br />
-                        <input id="confirmpassword" name="confirmpassword" type="text" autoComplete="off" onChange={event => setConfirmPassword(event.target.value)} required />
+                        <input id="confirmpassword" name="confirmpassword" type="password" autoComplete="off" onChange={event => setConfirmPassword(event.target.value)} required />
                     </div>
                     <div>
                         <button type="submit" onClick={handleSubmit}>Register</button>
