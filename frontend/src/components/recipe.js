@@ -35,8 +35,8 @@ export default function Recipe() {
         instructions = instructions?.slice(2, instructions.length - 2) // Stripping away 2 characters on either side, would be saved in database as {"Instructions"}
         if (instructions?.length > 0) {
             return (<div>
-                <h2>Instructions</h2>
-                <p>- {instructions}</p>
+                <h3>Instructions</h3>
+                <p>{instructions}</p>
             </div>
             )
         }
@@ -80,26 +80,30 @@ export default function Recipe() {
     return (
         recipe[0]?.id
             ?
-            <div className='recipe-card'>
-                <h1>{recipe[0]?.name} {favouriteButton()}</h1>
-                {recipe[0]?.tags.map((tag) => (
-                    <><span key={tag}>- {tag} </span><br /></>
-                ))}
-                <div>
-                    <h2>Ingredients</h2>
-                    {recipe[0]?.ingredients.map((item) => (
-                        <><span key={item}>- {item}</span><br /></>
+            <div className='recipe-page'>
+                <div className='recipe-card'>
+                    <h1>{recipe[0]?.name} {favouriteButton()}</h1>
+                    <h3>Tags</h3>
+                    {recipe[0]?.tags.map((tag) => (
+                        <><li key={tag}>{tag} </li></>
                     ))}
-                </div>
-                <div>
-                    <h2>Steps</h2>
-                    {recipe[0]?.steps.map((step) => (
-                        <><span key={step}>- {step}</span><br /></>
-                    ))}
-                </div>
-                {adtInstr()}
+                    <div>
+                        <h3>Ingredients</h3>
+                        {recipe[0]?.ingredients.map((item) => (
+                            <><li key={item}>{item}</li></>
+                        ))}
+                    </div>
+                    <div>
+                        <h3>Steps</h3>
+                        {recipe[0]?.steps.map((step) => (
+                            <><li key={step}>{step}</li></>
+                        ))}
+                    </div>
+                    {adtInstr()}
 
+                </div>
             </div>
+
             :
             <div></div>
 

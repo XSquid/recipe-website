@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from './axios';
 import { useNavigate } from 'react-router';
+import './css-files/register.css'
 
 export default function Register() {
 
@@ -11,7 +12,7 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (password === confirmPassword) {
+        if (password === confirmPassword && password && username && confirmPassword) {
             const response = await axios.post('/register/create', {
                 username,
                 password,
@@ -22,16 +23,17 @@ export default function Register() {
             }
         } else {
             //Change this to a visual display showing password mismatch instead of alert
-            alert('Password and confirm password are different')
+            alert('Please make sure there is a username, and passwords match')
         }
 
     }
 
     return (
-        <div className='registration-page'>
-            <h1>Registration</h1>
-            <div className='registration-form'>
+        <div className='register-page'>
+            <div className='register-form'>
+
                 <form>
+                    <h3>Registration</h3>
                     <div>
                         <label htmlFor="username">Username</label><br />
                         <input id="username" name="username" type="text" autoComplete="off" onChange={event => setUsername(event.target.value)} required />
@@ -49,9 +51,6 @@ export default function Register() {
                     </div>
                 </form>
             </div>
-
-        {password} <br />
-        {confirmPassword}
         </div>
     )
 }

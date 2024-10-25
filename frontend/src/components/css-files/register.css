@@ -1,0 +1,75 @@
+.register-page{
+    min-height: calc(100vh - 110px);
+    background: url('./img/cutting-board-1.jpg');
+    background-size: cover;
+    color: #FCFBF4
+}
+
+.register-form form{
+    height: 300px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.384);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+
+.register-form form h3{
+    font-weight: 500;
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+.register-form input{
+    display: block;
+    height: 20px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.178);
+    border: none;
+    border-bottom: 2px solid #964B00;
+    border-radius: 3px;
+    padding: 0;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 5px;
+    text-indent: 10px;
+    color: #FCFBF4;
+}
+
+.register-form label{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.register-form input:focus{
+    background-color: rgba(255, 255, 255, 0.397);
+}
+
+.register-form button{
+    margin-top: 25px;
+    width: 100%;
+    background-color: #FCFBF4;
+    color: #964B00;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-form button:hover{
+    box-shadow: inset #8080808f 0px 0px 60px -12px;
+
+}
+
+

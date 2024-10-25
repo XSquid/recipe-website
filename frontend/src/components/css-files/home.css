@@ -1,0 +1,16 @@
+.home-page{
+    min-height: calc(100vh - 110px);
+    height: 100%;
+}
+
+.home-description{
+    min-height: 80px;
+}
+
+.home-page button{
+    height: 2em;
+    min-width: 8rem;
+    font-size: 1.1em;
+    margin-right: 1em;
+    border-radius: 1.5em;
+}

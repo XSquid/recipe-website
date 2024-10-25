@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from './axios';
 import { useNavigate } from 'react-router';
 import useAuth from './hooks/useAuth';
+import './css-files/login.css'
 
 export default function Login() {
 
@@ -41,11 +42,11 @@ export default function Login() {
 
     }
     return (
-        <div>
-            <h1>Login</h1>
+        <div className='login-page'>
             <div className='login-form'>
                 <p id='err-msg'>{errMsg}</p>
                 <form>
+                <h3>Login</h3>
                     <div>
                         <label htmlFor="username">Username</label><br />
                         <input

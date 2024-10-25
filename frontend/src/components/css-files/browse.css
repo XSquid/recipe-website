@@ -1,6 +1,24 @@
-/* .recipe-browse{
-   
-} */
+.browse-page{
+    min-height: calc(100vh - 110px);
+    background: url('./img/cutting-board-2.jpg');
+    background-size: cover;
+}
+
+.browse-content{
+    margin-left: 10%;
+    margin-top: 1em;
+}
+
+.browse-select-recipe{
+    color: black;
+    font-weight: 500;
+    background-color: #964b0050;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    border-radius: 0.5em;
+}
 
 .browse-select-recipe:hover{
     cursor: pointer;

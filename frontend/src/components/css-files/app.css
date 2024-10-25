@@ -1,3 +1,11 @@
 button:hover{
     cursor: pointer;
 }
+
+div {
+    overflow: auto;
+}
+
+/* html,body {
+    height:100%;
+} */
