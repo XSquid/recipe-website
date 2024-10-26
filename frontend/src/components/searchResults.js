@@ -3,7 +3,7 @@ import axios from './axios';
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
-export default function Recipes() {
+export default function SearchResults() {
 
     const [results, setResults] = useState([]);
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ export default function Recipes() {
     useEffect(() => {
 
         const fetchData = async () => {
-            const response = await axios.get(`/recipes/${window.location.search}`)
+            const response = await axios.get(`/search/results${window.location.search}`, {withCredentials: true})
             if (response.data.length > 0 ) {
                 setResults(response.data)
             } 
@@ -29,7 +29,7 @@ export default function Recipes() {
         results.length > 0
         ?
         <div>
-            {results.map((item) => (
+            {results?.map((item) => (
                 <div key={item.id} onClick={() => clickHandler(item.id)}><span>{item.name}</span></div>
             ))}
         </div>

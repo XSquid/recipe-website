@@ -83,7 +83,7 @@ app.post('/admin/review/approve/:id', admin.checkAdmin, admin.approvePendingReci
 app.post('/submitrecipe', recipes.addRecipe)
 app.get('/getallrecipes', recipes.getAllRecipes)
 app.get('/recipe/:id', recipes.getRecipe)
-app.get('/recipes', recipes.searchForRecipe)
+app.get('/search/results', recipes.searchForRecipe)
 app.get('/recipes/alltags', recipes.getUniqueTags)
 app.get('/profile/favourites', recipes.getFavourites)
 app.post('/profile/addFavourite', recipes.addFavourite)

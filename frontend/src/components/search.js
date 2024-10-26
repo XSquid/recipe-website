@@ -2,6 +2,7 @@ import React from 'react';
 import './css-files/search.css'
 import { useState } from "react";
 import { retrieveTags } from '../functions/getRecipes';
+import { useNavigate } from 'react-router-dom';
 
 export default function Search() {
 
@@ -9,6 +10,7 @@ export default function Search() {
     const [searchBy, setSearchBy] = useState('name')
     const [tagSelect, setTagSelect] = useState(false)
     const [tags, setTags] = useState()
+    const navigate = useNavigate();
 
     const changeSearch = (e) => {
         setSearchBy(e.target.value)
@@ -46,7 +48,7 @@ export default function Search() {
         if (tags) {
             return (
                 <div className='search-tag'>
-                    <form action='/recipes' method='get' name='search'>
+                    <form action='/search' method='get' name='search'>
                         <div className='three-column-grid'>
                             {tags.map((tag) => (<div key={tag}>
                                 <input type='checkbox' id={tag} name='tag' value={tag}></input>
@@ -68,6 +70,15 @@ export default function Search() {
         fetchTagsOnSwap()
     }
 
+    const submitHandler = (e) => {
+        e.preventDefault();
+        const form = document.getElementById("searchForm");
+        let formData = new FormData(form);
+        let search = new URLSearchParams(formData);
+        let queryString = search.toString();
+        navigate(`/search/results?${queryString}`)
+    }
+
     return (
         searchBy === 'name'
             ?
@@ -75,7 +86,7 @@ export default function Search() {
                 <div className='search-content'>
                     {selectTag()}
                     <div className='search-name'>
-                        <form action='/recipes' method='get' name='search'>
+                        <form action='/search' method='get' name='search' id='searchForm'>
                             <div>
                                 <label htmlFor='recipe-search'></label><br />
                                 <input
@@ -89,7 +100,7 @@ export default function Search() {
                                     required
                                 />
                             </div>
-                            <button type='submit'>Search Recipe</button>
+                            <button type='submit' onClick={submitHandler}>Search Recipe</button>
                         </form>
 
                     </div>
