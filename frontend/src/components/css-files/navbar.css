@@ -22,8 +22,32 @@
     margin-left: 10px;
     border-radius: 1rem;
     background-color: #FCFBF4;
+    user-select: none;
 }
 
 .navbar-container button:hover{
     background-color:#fcfbf4b4
+}
+
+/* CSS FOR SMALL MOBILE */
+@media only screen and (max-width: 600px) {
+    .navbar-container{
+        text-align: center;
+        min-height: 125px;
+        padding-bottom: 1em;
+        width: 100vw;
+        min-width: 100vw;
+        padding-left: 0;
+    }
+    .navbar-container button{
+        min-width: 90%;
+        margin-left: 0px;
+    }
+
+    .navbar{
+        display: grid;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 0.5vh;
+    }
 }

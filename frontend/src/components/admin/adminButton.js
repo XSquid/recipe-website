@@ -1,16 +1,15 @@
-import { useNavigate } from "react-router";
 import useAuth from '../hooks/useAuth';
+import { Link } from "react-router-dom";
 
 export default function AdminButton() {
 
-    const navigate = useNavigate();
     const admin = process.env.REACT_APP_ADMIN
     const { auth} = useAuth();
 
     const renderButton = () => {
         if (auth.username === admin) {
             return(
-                <button onClick={() => navigate('/admin')}>Admin</button>
+                <Link to={'/admin'}><button>Admin</button></Link>
             )
         }
         else return null

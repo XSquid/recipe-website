@@ -4,6 +4,7 @@ import axios from './axios';
 import { useNavigate } from 'react-router-dom';
 import './css-files/browse.css'
 
+
 export default function Browse() {
 
     const [recipes, setRecipes] = useState([])

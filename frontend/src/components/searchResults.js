@@ -2,6 +2,8 @@ import React from 'react';
 import axios from './axios';
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import './css-files/searchResults.css'
+import BackButton from './backButton';
 
 export default function SearchResults() {
 
@@ -15,10 +17,10 @@ export default function SearchResults() {
     useEffect(() => {
 
         const fetchData = async () => {
-            const response = await axios.get(`/search/results${window.location.search}`, {withCredentials: true})
-            if (response.data.length > 0 ) {
+            const response = await axios.get(`/search/results${window.location.search}`, { withCredentials: true })
+            if (response.data.length > 0) {
                 setResults(response.data)
-            } 
+            }
         }
 
         fetchData();
@@ -27,15 +29,24 @@ export default function SearchResults() {
 
     return (
         results.length > 0
-        ?
-        <div>
-            {results?.map((item) => (
-                <div key={item.id} onClick={() => clickHandler(item.id)}><span>{item.name}</span></div>
-            ))}
-        </div>
-        :
-        <div>
-            No Results Found
-        </div>
+            ?
+            <div className='search-results-page'>
+                <BackButton />
+                <div className='search-results-content'>
+                    <h1>Search Results</h1>
+                    {results?.map((item) => (
+                        <div key={item.id} className='search-results-recipe'><li onClick={() => clickHandler(item.id)} className='search-results-select-recipe'>{item.name}</li></div>
+                    ))}
+                </div>
+            </div>
+
+            :
+            <div className='search-results-page'>
+                <BackButton />
+                <div className='search-results-content'>
+                    <h1>No Results Found</h1>
+                </div>
+
+            </div>
     )
 }

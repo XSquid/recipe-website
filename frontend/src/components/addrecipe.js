@@ -3,6 +3,7 @@ import './css-files/addrecipe.css'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from './axios';
+import BackButton from './backButton';
 
 export default function AddRecipe() {
 
@@ -68,6 +69,7 @@ export default function AddRecipe() {
 
     return (
         <div className='add-recipe-page'>
+            <BackButton />
             <div className='add-recipe-content'>
                 <div className='title-container'>
                     <h1 className='title'>Add Recipe</h1>
@@ -96,26 +98,29 @@ export default function AddRecipe() {
 
                 <div className='add-recipe-form'>
                     <h2>{submitSuccess}</h2>
-                    <form id='addRecipeForm'>
+                    <div className='form-content'>
+                        <form id='addRecipeForm'>
 
-                        <label htmlFor="recipe_name">Recipe Name</label><br />
-                        <input id="recipe_name" name="recipe_name" type="text" autoComplete="off" required /><br />
+                            <label htmlFor="recipe_name">Recipe Name</label><br />
+                            <input id="recipe_name" name="recipe_name" type="text" autoComplete="off" required /><br />
 
-                        <label htmlFor="ingredients">Ingredients</label><br />
-                        <textarea id="ingredients" name="ingredients" type="textarea" autoComplete="off" rows='5' required /><br />
+                            <label htmlFor="ingredients">Ingredients</label><br />
+                            <textarea id="ingredients" name="ingredients" type="textarea" autoComplete="off" rows='5' required /><br />
 
-                        <label htmlFor="steps">Steps</label><br />
-                        <textarea id="steps" name="steps" type="textarea" autoComplete="off" required rows='5' /><br />
+                            <label htmlFor="steps">Steps</label><br />
+                            <textarea id="steps" name="steps" type="textarea" autoComplete="off" required rows='5' /><br />
 
-                        <label htmlFor="additional">Additional Instructions</label><br />
-                        <textarea id="additional" name="additional" type="textarea" autoComplete="off" /><br />
+                            <label htmlFor="additional">Additional Instructions</label><br />
+                            <textarea id="additional" name="additional" type="textarea" autoComplete="off" /><br />
 
-                        <label htmlFor="tags">Tags</label><br />
-                        <textarea id="tags" name="tags" type="textarea" autoComplete="off" required rows='2' /><br />
+                            <label htmlFor="tags">Tags</label><br />
+                            <textarea id="tags" name="tags" type="textarea" autoComplete="off" required rows='2' /><br />
 
-                        <button type="submit" onClick={submitRecipe}>Submit</button>
+                            <button type="submit" onClick={submitRecipe}>Submit</button>
 
-                    </form>
+                        </form>
+                    </div>
+
                 </div>
 
             </div>

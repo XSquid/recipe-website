@@ -32,7 +32,7 @@ export default function Navbar() {
                     <Link to={'/search'}><button>Search</button></Link>
                     <Link to={'/profile'}><button>Profile</button></Link>
                     <Link to={'/addrecipe'}><button>Add Recipe</button></Link>
-                    <button onClick={logoutHandler}>Log Out</button>
+                    <Link to={'/'}><button onClick={logoutHandler}>Log Out</button></Link>
                     <AdminButton />
                     
 

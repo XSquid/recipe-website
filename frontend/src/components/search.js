@@ -48,7 +48,7 @@ export default function Search() {
         if (tags) {
             return (
                 <div className='search-tag'>
-                    <form action='/search' method='get' name='search'>
+                    <form action='/search' method='get' name='search' id='searchForm'>
                         <div className='three-column-grid'>
                             {tags.map((tag) => (<div key={tag}>
                                 <input type='checkbox' id={tag} name='tag' value={tag}></input>
@@ -56,7 +56,7 @@ export default function Search() {
                             </div>))}
                         </div>
 
-                        <button type='submit'>Search Recipe</button>
+                        <button type='submit' onClick={submitHandler}>Search Recipe</button>
                     </form>
 
                 </div>

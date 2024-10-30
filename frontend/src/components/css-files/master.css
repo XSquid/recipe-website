@@ -1,7 +1,8 @@
-.master{
-
-    /* background: url('./img/cutting-board-1.jpg') */
-    background-color: beige;
-
+/* CSS FOR SMALL MOBILE */
+@media only screen and (max-width: 600px) {
+    .master{
+        min-width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+    }
 }
-

@@ -1,0 +1,32 @@
+.back-btn {
+    position: absolute;
+    top: 130px;
+    left: 20px;
+    border-radius: 50%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #192733;
+    user-select: none;
+    color: #FCFBF4;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.back-btn:hover{
+    background-color: #27435c;
+}
+
+.back-btn:active{
+    background-color: #2166a3;
+}
+
+@media only screen and (max-width: 600px) {
+    .back-btn{
+        top: 3vw;
+        left: 3vw;
+        background-color: #FCFBF4;
+        color: #191919
+    }
+}

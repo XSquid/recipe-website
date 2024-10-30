@@ -1,6 +1,6 @@
 .profile-page{
     min-height: calc(100vh - 110px);
-    background: url('./img/cutting-board-2.jpg');
+    background: url('./img/cutting-board-4.jpg');
     background-size: cover;
 }
 
@@ -23,8 +23,25 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    user-select: none;
 }
 
 .profile-select-recipe:hover{
-    box-shadow: inset #8080808f 0px 0px 60px -12px;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.profile-select-recipe:active{
+    box-shadow: inset #4e4e4ec9 0px 0px 60px -12px;
+}
+
+/* CSS FOR SMALL MOBILE */
+@media only screen and (max-width: 600px) {
+    .profile-page {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        min-height: calc(100vh - 142px);
+        max-height: auto;
+        overflow: hidden;
+    }
 }

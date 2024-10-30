@@ -47,7 +47,7 @@ export default function Login() {
                 <p id='err-msg'>{errMsg}</p>
                 <form>
                 <h3>Login</h3>
-                    <div>
+                    <div className='login-input'>
                         <label htmlFor="username">Username</label><br />
                         <input
                             id="username"
@@ -57,7 +57,7 @@ export default function Login() {
                             autoComplete='off'
                             required />
                     </div>
-                    <div>
+                    <div className='login-input'>
                         <label htmlFor="password">Password</label><br />
                         <input
                             id="password"

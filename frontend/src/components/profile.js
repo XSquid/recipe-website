@@ -4,6 +4,7 @@ import { getFavourites } from '../functions/getRecipes';
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import './css-files/profile.css'
+import BackButton from './backButton';
 
 export default function Profile() {
 
@@ -42,6 +43,7 @@ export default function Profile() {
 
     return (
         <div className='profile-page'>
+            <BackButton />
             <div className='profile-content'>
             <h1>Saved Recipes for {auth.username}</h1>
             {recipes?.map((ea) => (<div key={ea.id} ><span className='profile-select-recipe' onClick={() => clickHandler(ea.id)}>{ea.name}</span></div>))}

@@ -34,19 +34,19 @@ export default function Register() {
 
                 <form>
                     <h3>Registration</h3>
-                    <div>
+                    <div className='register-input'>
                         <label htmlFor="username">Username</label><br />
                         <input id="username" name="username" type="text" autoComplete="off" onChange={event => setUsername(event.target.value)} required />
                     </div>
-                    <div>
+                    <div className='register-input'>
                         <label htmlFor="password">Password</label><br />
                         <input id="password" name="password" type="password" autoComplete="off" onChange={event => setPassword(event.target.value)} required />
                     </div>
-                    <div>
+                    <div className='register-input'>
                         <label htmlFor="confirmpassword">Confirm Password</label><br />
                         <input id="confirmpassword" name="confirmpassword" type="password" autoComplete="off" onChange={event => setConfirmPassword(event.target.value)} required />
                     </div>
-                    <div>
+                    <div className='register-input'>
                         <button type="submit" onClick={handleSubmit}>Register</button>
                     </div>
                 </form>

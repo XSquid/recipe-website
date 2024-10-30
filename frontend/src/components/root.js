@@ -5,9 +5,10 @@ import './css-files/master.css'
 
 export default function Root() {
     return (
-        <>
+        <div className='master'>
             <Navbar />
-            <div className='master'><Outlet /></div>
-        </>
+            <Outlet />
+        </div>
+
     )
 }

@@ -30,7 +30,7 @@ export default function Home() {
     return (
         <div className='home-page'>
             <div className='home-content'>
-                <h2>Welcome to the recipe site</h2>
+                <h2>Welcome to the Recipe Book</h2>
                 <div className='home-description'>
                     <p>Click button below to either search for recipes, or create an account and login to save your favourite recipes for easy viewing in your profile.</p>
                 </div>

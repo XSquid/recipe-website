@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import './css-files/recipe.css'
 import { addFavourite, removeFavourite } from '../functions/getRecipes';
 import useAuth from './hooks/useAuth';
+import BackButton from './backButton';
 
 
 
@@ -79,8 +80,10 @@ export default function Recipe() {
 
     return (
 
-            <div className='recipe-page'>
-                <div className='recipe-card'>
+        <div className='recipe-page'>
+            <BackButton />
+            <div className='recipe-card'>
+                <div className='recipe-content'>
                     <h1>{recipe[0]?.name} {favouriteButton()}</h1>
                     <h3>Tags</h3>
                     {recipe[0]?.tags.map((tag) => (
@@ -101,7 +104,9 @@ export default function Recipe() {
                     {adtInstr()}
 
                 </div>
+
             </div>
+        </div>
 
 
     )
