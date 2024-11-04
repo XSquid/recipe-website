@@ -8,7 +8,7 @@ const config = {
 };
 
 export const retrieveTags = async () => {
-    const response = await axios.get('/recipes/alltags')
+    const response = await axios.get('/recipe/tags')
     return response.data
 }
 

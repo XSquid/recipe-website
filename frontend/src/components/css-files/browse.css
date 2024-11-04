@@ -40,3 +40,15 @@
         overflow: hidden;
     }
 }
+
+/* CSS FOR TABLETS */
+@media only screen and (min-device-width : 601px) and (max-device-width : 1024px) {
+    .browse-page{
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        min-height: calc(100vh - 171px);
+        max-height: auto;
+        overflow: hidden;
+    }
+}

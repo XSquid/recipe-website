@@ -5,8 +5,6 @@ require('dotenv').config()
 const registerUser = (req, res) => {
     const { username, password, confirmPassword } = req.body
     const saltRounds = 13;
-    console.log(username, password, confirmPassword);
-
     if (password === confirmPassword) {
 
         bcrypt.genSalt(saltRounds, function (err, salt) {
@@ -25,7 +23,7 @@ const registerUser = (req, res) => {
                             return null
                         }
                     })
-                    console.log(`Created user with username: ${username}`)
+                    console.log(`Created user with user_id: ${user_id}, username: ${username}`)
                     res.sendStatus(201)
                 })
             })
@@ -37,7 +35,6 @@ const logoutUser = (req, res) => {
     req.logout(function (err) {
         if (err) { return next(err); }
         req.session.destroy();
-        console.log('logging out')
       });
       res.sendStatus(202);
 }

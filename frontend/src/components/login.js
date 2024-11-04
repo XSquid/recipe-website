@@ -44,9 +44,10 @@ export default function Login() {
     return (
         <div className='login-page'>
             <div className='login-form'>
-                <p id='err-msg'>{errMsg}</p>
+                
                 <form>
                 <h3>Login</h3>
+                <p id='err-msg'>{errMsg}</p>
                     <div className='login-input'>
                         <label htmlFor="username">Username</label><br />
                         <input

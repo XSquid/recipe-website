@@ -22,10 +22,21 @@
     background-color: #2166a3;
 }
 
+/* CSS FOR SMARTPHONE */
 @media only screen and (max-width: 600px) {
     .back-btn{
         top: 3vw;
         left: 3vw;
+        background-color: #FCFBF4;
+        color: #191919
+    }
+}
+
+/* CSS FOR TABLETS */
+@media only screen and (min-device-width : 601px) and (max-device-width : 1024px) {
+    .back-btn{
+        top: 2vw;
+        left: 2vw;
         background-color: #FCFBF4;
         color: #191919
     }

@@ -36,7 +36,7 @@ export default function AddRecipe() {
 
         if (recipe_name.length > 1 && ingredients.length > 1 && steps.length > 1 && tags.length >= 1) {
             e.currentTarget.disabled = true;
-            const response = await axios.post('/submitrecipe',
+            const response = await axios.post('/recipe/submit',
                 {
                     recipe_name,
                     ingredients,

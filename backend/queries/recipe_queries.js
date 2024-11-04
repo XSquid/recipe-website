@@ -21,9 +21,7 @@ const getRecipe = (req, res) => {
     })
 }
 
-//Add recipe to database
-//Need to add checks for malicious code
-//Need to add checks for duplicates
+//Add recipe to pending database
 const addRecipe = (req, res) => {
 
     const uid = req.user?.id
@@ -96,6 +94,7 @@ const getUniqueTags = (req, res) => {
     })
 }
 
+//Get favourites for user
 const getFavourites = (req, res) => {
     const uid = req.user?.id
     if (uid) {
@@ -116,6 +115,8 @@ const getFavourites = (req, res) => {
 
 }
 
+
+//Add recipe to favourite list for user
 const addFavourite = (req, res) => {
     const { id } = req.body
     const uid = req.user?.id
@@ -133,7 +134,7 @@ const addFavourite = (req, res) => {
             if (data !== null) {
                 data.forEach(el => {
                     if (el[0] == (id)) {
-                        console.log(`${el[0]} already favourited`)
+                        // console.log(`${el[0]} already favourited`)
                         check = true
                     }
                 })
@@ -155,7 +156,7 @@ const addFavourite = (req, res) => {
                         res.sendStatus(500)
                         return null
                     }
-                    console.log(`Added recipe ID ${id} to recipeBook ${recipeBookID}`)
+                    // console.log(`Added recipe ID ${id} to recipeBook ${recipeBookID}`)
                     return res.status(201).json(recipeBook)
                 })
             }
@@ -166,6 +167,7 @@ const addFavourite = (req, res) => {
 
 }
 
+//Remove favourite from users favourite list
 const removeFavourite = (req, res) => {
     const { id } = req.body
     const uid = req.user?.id
@@ -184,8 +186,7 @@ const removeFavourite = (req, res) => {
                     res.sendStatus(500)
                     return null
                 }
-                console.log(`Removed recipe ID ${id} from recipe book for user ID ${uid} `)
-                console.log(newFavourites)
+                // console.log(`Removed recipe ID ${id} from recipe book for user ID ${uid} `)
                 return res.status(201).json(newFavourites)
             })
             

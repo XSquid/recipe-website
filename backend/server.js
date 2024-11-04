@@ -2,7 +2,6 @@ const express = require('express');
 const session = require('express-session')
 const recipes = require('./queries/recipe_queries')
 const accounts = require('./queries/account_queries')
-const admin = require('./queries/admin_queries')
 const corsOptions = require('./config/corsOptions')
 const credentials = require('./config/credentials')
 const cors = require('cors');
@@ -12,6 +11,9 @@ var LocalStrategy = require('passport-local').Strategy;
 const { database } = require('./database')
 const bcrypt = require("bcrypt");
 const helmet = require('helmet')
+const recipe = require('./routes/recipe')
+const profile = require('./routes/profile')
+const admin = require('./routes/admin')
 
 const app = express();
 const PORT = 3000;
@@ -60,12 +62,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-    // console.log(`Serialize user: ${user.id}`)
     done(null, user.id) //make sure id is same as the column in database
   });
 
 passport.deserializeUser((id, done) => {
-    // console.log(`Deserialize user: ${id}`)
     database.query('SELECT * FROM users WHERE id = $1', [id], (error, users) => {
         if (error) {
             return done(error)
@@ -74,21 +74,12 @@ passport.deserializeUser((id, done) => {
     })
 })
 
-
-app.get('/admin', admin.checkAdmin, function (req, res) { res.sendStatus(200) })
-app.get('/admin/get_pending', admin.checkAdmin, admin.getAllPending)
-app.get('/admin/review/:id', admin.checkAdmin, admin.getPendingByID)
-app.post('/admin/review/deny/:id', admin.checkAdmin, admin.denyPendingRecipe)
-app.post('/admin/review/approve/:id', admin.checkAdmin, admin.approvePendingRecipe)
-app.post('/submitrecipe', recipes.addRecipe)
-app.get('/getallrecipes', recipes.getAllRecipes)
-app.get('/recipe/:id', recipes.getRecipe)
+app.use('/admin', admin)
+app.use('/recipe', recipe)
+app.use('/profile', profile)
 app.get('/search/results', recipes.searchForRecipe)
-app.get('/recipes/alltags', recipes.getUniqueTags)
-app.get('/profile/favourites', recipes.getFavourites)
-app.post('/profile/addFavourite', recipes.addFavourite)
-app.post('/profile/removeFavourite', recipes.removeFavourite)
 app.post('/register/create', accounts.registerUser)
+
 app.post('/login',
     passport.authenticate('local'),
     function (req, res) {

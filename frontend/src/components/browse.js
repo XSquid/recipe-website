@@ -18,7 +18,7 @@ export default function Browse() {
     //Retrieve all recipe data on page load
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('/getallrecipes')
+            const response = await axios.get('/recipe/all')
             setRecipes(response.data)
         };
 

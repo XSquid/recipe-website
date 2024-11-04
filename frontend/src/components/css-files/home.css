@@ -56,6 +56,7 @@
 
 }
 
+/* CSS FOR SMARTPHONES */
 @media only screen and (max-width: 600px) {
     
     .home-page{
@@ -64,9 +65,41 @@
         max-width: 100vw;
         min-height: calc(100vh - 142px);
         max-height: calc(100vh - 142px);
-        max-height: auto;
-        overflow: hidden;
+    }
+    .home-content{
+        top: auto;
+        margin-top: 5vw;
+        margin-bottom: auto;
+        min-width: 90vw;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .home-description{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .home-links{
+        text-align: center;
+        display: grid;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr;
+        row-gap: 1.5vh;
+    }
+    .home-links button{
+        width: 85vw;
+    }
+}
 
+/* CSS FOR TABLETS */
+@media only screen and (min-device-width : 601px) and (max-device-width : 1024px) {
+    .home-page{
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        min-height: calc(100vh - 171px);
+        max-height: calc(100vh - 171px);
+        overflow: hidden;
     }
     .home-content{
         top: auto;

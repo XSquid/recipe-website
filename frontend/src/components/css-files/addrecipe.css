@@ -6,8 +6,6 @@
     text-shadow: 0 0 2px #000;
 }
 
-/* .add-recipe-content {} */
-
 .add-recipe-form {
     height: auto;
     width: 40vw;
@@ -22,14 +20,15 @@
     padding: 50px 35px;
 }
 
+
 textarea {
-    width: 40vw;
+    width: calc(40vw - 8px);
     height: auto;
     resize: vertical;
 }
 
 .add-recipe-form input {
-    width: 40vw;
+    width: calc(40vw - 8px);
 }
 
 .title-container {
@@ -156,4 +155,66 @@ textarea {
         margin-left: 4vw;
     }
 
+}
+
+/* CSS FOR TABLETS */
+@media only screen and (min-device-width : 601px) and (max-device-width : 1024px) {
+    .add-recipe-page {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        min-height: calc(100vh - 171px);
+        max-height: auto;
+        overflow: hidden;
+    }
+
+    .tooltip-text {
+        left: 10vw;
+        width: calc(80vw - 30px);
+        font-size: 15px;
+    }
+
+    .add-recipe-form {
+        top: auto;
+        left: 0;
+        margin-top: 5vw;
+        min-width: 90vw;
+        max-width: 90vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        padding-left: 0;
+        padding-right: 0;
+        border: none;
+    }
+    .form-content {
+        width: 100%;
+    }
+
+    textarea {
+        width: 80vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        border-left: 0;
+        border-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .add-recipe-form input {
+        width: 80vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .add-recipe-form label {
+        margin-left: 5vw;
+    }
+
+    .add-recipe-page button {
+        width: 80vw;
+        margin-left: 4vw;
+    }
 }
