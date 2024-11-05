@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
 const recipes = require('./queries/recipe_queries')
 const accounts = require('./queries/account_queries')
 const corsOptions = require('./config/corsOptions')
@@ -27,7 +28,10 @@ app.use(session({
         secure: true,
         sameSite: 'none',
         maxAge: 1000 * 60 * 10 // 10 minutes
-    }
+    },
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+      })
 }))
 
 //Cors required for cross origin access
