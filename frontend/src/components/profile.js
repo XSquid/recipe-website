@@ -20,6 +20,7 @@ export default function Profile() {
     const loadFavourites = async () => {
         if (recipes.length === 0) {
             const uid = auth.uid
+            console.log(uid)
             const response = await getFavourites(uid);
             if (response === 'No session found') {
                 setAuth({})
