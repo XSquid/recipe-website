@@ -20,10 +20,14 @@ const app = express();
 const PORT = 3000;
 
 app.use(helmet());
+
+app.set("trust proxy", 1)
+
 app.use(session({
     secret: 'meowmeow',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    proxy: true,
     cookie: {
         secure: true,
         sameSite: 'none',
