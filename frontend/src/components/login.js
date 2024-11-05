@@ -25,7 +25,7 @@ export default function Login() {
             if (response.status === 200) {
                 const username = response?.data.username
                 const uid = response?.data.uid
-                setAuth({ username, uid })
+                await setAuth({ username, uid })
                 navigate('/profile')
             }
         } catch (err) {
