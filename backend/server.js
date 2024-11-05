@@ -25,6 +25,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: true,
+        sameSite: 'none',
         maxAge: 1000 * 60 * 10 // 10 minutes
     }
 }))
@@ -48,7 +49,7 @@ passport.use(new LocalStrategy(function (username, password, done) {
         if (error) return done(error)
         if (!user.rows[0]) return done(null, false)
         const hash = user.rows[0].password;
-        bcrypt.compare(password, hash, function(err, result) {
+        bcrypt.compare(password, hash, function (err, result) {
             if (!result) {
                 console.log('Wrong Password')
                 return done(null, false)
@@ -63,7 +64,7 @@ app.use(passport.session());
 
 passport.serializeUser((user, done) => {
     done(null, user.id) //make sure id is same as the column in database
-  });
+});
 
 passport.deserializeUser((id, done) => {
     database.query('SELECT * FROM users WHERE id = $1', [id], (error, users) => {
@@ -85,8 +86,8 @@ app.post('/login',
     function (req, res) {
         const uid = req.user.id
         const username = req.user.username
-        res.status(200).json({uid, username})
-    } 
+        res.status(200).json({ uid, username })
+    }
 )
 app.post('/logout', accounts.logoutUser)
 app.use('/', function (req, res, next) {
