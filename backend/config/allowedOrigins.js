@@ -14,8 +14,8 @@ const allowedOrigins = [
     'https://recipe-book-frontend-od7o.onrender.com',
     'https://recipe-book-frontend-od7o.onrender.com/:10000',
     'recipe-book-frontend-od7o:10000',
-    'therecipebook.ca',
-    'www.therecipebook.ca'
+    'https://therecipebook.ca',
+    'https://www.therecipebook.ca'
 ]
 
 module.exports = allowedOrigins
