@@ -18,6 +18,7 @@ export default function AddRecipe() {
             '"': '',
             "'": '',
             "-": '',
+            "/": '/',
         };
         const reg = /[&<>"'-]/ig;
         return string.toString().replace(reg, (match) => (map[match]));
