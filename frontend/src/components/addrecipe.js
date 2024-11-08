@@ -36,30 +36,31 @@ export default function AddRecipe() {
 
         if (recipe_name.length > 1 && ingredients.length > 1 && steps.length > 1 && tags.length >= 1) {
             e.currentTarget.disabled = true;
-            const response = await axios.post('/recipe/submit',
-                {
-                    recipe_name,
-                    ingredients,
-                    steps,
-                    additional,
-                    tags
-                },
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            )
-            if (response.status === 201) {
-                setTimeout(function () {
-                    setSubmitSuccess('Submitting recipe...')
-                    setTimeout(function () {
-                        setSubmitSuccess('Recipe submitted for review!')
-                        setTimeout(function () {
-                            navigate('/profile')
-                        }, 2000)
-                    }, 2000)
-                }, 200)
-            }
+            console.log(ingredients)
+            // const response = await axios.post('/recipe/submit',
+            //     {
+            //         recipe_name,
+            //         ingredients,
+            //         steps,
+            //         additional,
+            //         tags
+            //     },
+            //     {
+            //         headers: { 'Content-Type': 'application/json' },
+            //         withCredentials: true
+            //     }
+            // )
+            // if (response.status === 201) {
+            //     setTimeout(function () {
+            //         setSubmitSuccess('Submitting recipe...')
+            //         setTimeout(function () {
+            //             setSubmitSuccess('Recipe submitted for review!')
+            //             setTimeout(function () {
+            //                 navigate('/profile')
+            //             }, 2000)
+            //         }, 2000)
+            //     }, 200)
+            // }
 
         } else {
             alert('Missing information')
