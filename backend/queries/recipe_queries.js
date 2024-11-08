@@ -2,7 +2,6 @@ const { database } = require('../database')
 
 //Retrieve all recipes
 const getAllRecipes = (req, res) => {
-    console.log('Request received')
     database.query('SELECT * FROM RECIPES ORDER BY name', (error, results) => {
         if (error) {
             throw error
@@ -98,7 +97,6 @@ const getUniqueTags = (req, res) => {
 //Get favourites for user
 const getFavourites = (req, res) => {
     const uid = req.user?.id
-    console.log(req.user)
     if (uid) {
         database.query('SELECT recipes.id, recipes.name, UNNEST(users_recipes.favourites) as rid FROM recipes, users_recipes WHERE users_recipes.uid = $1;', [uid], (error, results) => {
             if (error) {
